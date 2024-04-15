@@ -9,7 +9,6 @@ module.exports = {
   resolve: {
     modules: ["src", "node_modules"],
   },
-  rules: [],
   plugins: [],
   devServer: {
     static: {
