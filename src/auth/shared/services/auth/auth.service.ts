@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
+import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { Store } from 'store';
@@ -15,7 +16,7 @@ export interface User {
   providedIn: 'root',
 })
 export class AuthService {
-  auth$ = this.afAuth.authState.pipe(
+  auth$: Observable<firebase.default.User | null> = this.afAuth.authState.pipe(
     tap((firebaseUser) => {
       if (!firebaseUser) {
         this.store.set('user', null);
@@ -26,25 +27,35 @@ export class AuthService {
     })
   );
 
-  get authState() {
+  get currentUser(): User | undefined {
+    return this.store.value.user;
+  }
+
+  get authState(): Observable<firebase.default.User | null> {
     return this.afAuth.authState;
   }
 
   constructor(private afAuth: AngularFireAuth, private store: Store) {}
 
-  createUser(email: string, password: string) {
+  createUser(
+    email: string,
+    password: string
+  ): Promise<firebase.default.auth.UserCredential> {
     return this.afAuth.createUserWithEmailAndPassword(email, password);
   }
 
-  loginUser(email: string, password: string) {
+  loginUser(
+    email: string,
+    password: string
+  ): Promise<firebase.default.auth.UserCredential> {
     return this.afAuth.signInWithEmailAndPassword(email, password);
   }
 
-  logoutUser() {
+  logoutUser(): Promise<void> {
     return this.afAuth.signOut();
   }
 
-  setAuthUser(firebaseUser: unknown) {
+  setAuthUser(firebaseUser: unknown): void {
     const { email, uid } = firebaseUser as any;
 
     this.store.set('user', { email, uid, authenticated: true });
