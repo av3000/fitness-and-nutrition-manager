@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import {
+  MealCreateParameters,
+  MealsService,
+} from 'src/health/shared/services/meals/meals.service';
 
 @Component({
   selector: 'meal',
@@ -6,9 +11,14 @@ import { Component } from '@angular/core';
   templateUrl: './meal-item.component.html',
 })
 export class MealItemComponent {
-  constructor() {}
+  constructor(private service: MealsService, private router: Router) {}
 
-  addMeal(event: unknown) {
-    console.log('Meal:', event);
+  createMeal(mealCreateParams: MealCreateParameters) {
+    this.service.create(mealCreateParams);
+    this.backToMeals();
+  }
+
+  backToMeals() {
+    this.router.navigate(['/meals']);
   }
 }

@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
+import {
+  AngularFireDatabase,
+  AngularFireList,
+} from '@angular/fire/compat/database';
 
 import { Observable, tap } from 'rxjs';
 
@@ -23,8 +26,12 @@ export interface MealCreateParameters {
   providedIn: 'root',
 })
 export class MealsService {
+  private userMealsEndpointAPI = `/meals/${this.uid}`;
+
+  mealsTable: AngularFireList<Meal> = this.db.list(this.userMealsEndpointAPI);
+
   meals$: Observable<Meal[]> = this.db
-    .list<Meal>(`meals/${this.uid}`)
+    .list<Meal>(`${this.userMealsEndpointAPI}`)
     .valueChanges()
     .pipe(tap((meals) => this.store.set('meals', meals)));
 
@@ -37,4 +44,15 @@ export class MealsService {
     private db: AngularFireDatabase,
     private authService: AuthService
   ) {}
+
+  // TODO: implement remaining methods with latest AngularFire API
+
+  getAll(): AngularFireList<Meal> {
+    // TODO: implement this method to retrieve all meals into meals list component
+    return this.mealsTable;
+  }
+
+  create(mealCreateParams: MealCreateParameters) {
+    return this.mealsTable.push(mealCreateParams as Meal);
+  }
 }
