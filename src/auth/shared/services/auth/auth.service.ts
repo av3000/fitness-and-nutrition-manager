@@ -34,6 +34,10 @@ export class AuthService {
     return this.afAuth.signInWithEmailAndPassword(email, password);
   }
 
+  logoutUser() {
+    return this.afAuth.signOut();
+  }
+
   setAuthUser(firebaseUser: unknown) {
     const { email, uid } = firebaseUser as any;
 

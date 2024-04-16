@@ -1,0 +1,12 @@
+<div class="app-header">
+  <div class="wrapper">
+    <img
+      src="/assets/img/js-logo-small.svg"
+      alt="https://icons8.com/icon/laVIsJnTtYoj/javascript-logo"
+      class="app-header"
+    />
+    <div class="app-header__user-info" *ngIf="user?.authenticated">
+      <span (click)="logoutUser()"></span>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 
@@ -14,7 +15,17 @@ export class AppComponent implements OnInit {
   user$ = this.store.select<User>('user');
   private subs$ = new Subscription();
 
-  constructor(private store: Store, private authService: AuthService) {}
+  constructor(
+    private store: Store,
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  async onLogout(): Promise<void> {
+    console.log('logout');
+    await this.authService.logoutUser();
+    this.router.navigate(['/auth/login']);
+  }
 
   ngOnInit() {
     this.subs$.add(this.authService.auth$.subscribe());
