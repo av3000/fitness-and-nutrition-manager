@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
   ) {}
 
   async onLogout(): Promise<void> {
-    console.log('logout');
     await this.authService.logoutUser();
     this.router.navigate(['/auth/login']);
   }
