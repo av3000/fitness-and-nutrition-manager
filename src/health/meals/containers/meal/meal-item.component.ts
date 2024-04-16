@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class MealItemComponent {
   constructor() {}
+
+  addMeal(event: unknown) {
+    console.log('Meal:', event);
+  }
 }

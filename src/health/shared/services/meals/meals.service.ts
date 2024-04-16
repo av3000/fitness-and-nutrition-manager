@@ -14,6 +14,11 @@ export interface Meal {
   $exists: () => boolean;
 }
 
+export interface MealCreateParameters {
+  name: string;
+  ingredients: string[];
+}
+
 @Injectable({
   providedIn: 'root',
 })
