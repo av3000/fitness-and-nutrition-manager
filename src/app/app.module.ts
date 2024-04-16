@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AuthModule } from 'src/auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { Store } from 'src/store';
+import { AppComponent } from './containers/app/app.component';
+import { Store } from 'store';
 
 @NgModule({
   declarations: [AppComponent],
