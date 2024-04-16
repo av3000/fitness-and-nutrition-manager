@@ -11,7 +11,9 @@ export interface User {
   authenticated: boolean;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthService {
   auth$ = this.afAuth.authState.pipe(
     tap((firebaseUser) => {
