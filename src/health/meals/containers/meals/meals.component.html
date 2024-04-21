@@ -18,6 +18,8 @@
       *ngFor="let meal of meals"
       [item]="meal"
       (remove)="removeMeal($event)"
+      backRoute="meals"
+      [healthFeatureType]="featureTypeMeal"
     >
     </list-item>
   </div>

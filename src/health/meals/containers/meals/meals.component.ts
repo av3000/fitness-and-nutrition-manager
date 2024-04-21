@@ -7,6 +7,7 @@ import {
   Meal,
   MealsService,
 } from 'src/health/shared/services/meals/meals.service';
+import { HealthFeatureType } from 'src/health/shared/enums';
 
 @Component({
   selector: 'meals',
@@ -16,6 +17,8 @@ import {
 export class MealsComponent {
   meals$!: Observable<Meal[]>;
   private subs$ = new Subscription();
+
+  featureTypeMeal = HealthFeatureType.Meal;
 
   constructor(private service: MealsService, private store: Store) {}
 

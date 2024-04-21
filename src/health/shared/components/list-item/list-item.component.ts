@@ -6,6 +6,8 @@ import {
   Output,
 } from '@angular/core';
 
+import { HealthFeatureType } from '../../enums';
+
 @Component({
   selector: 'list-item',
   styleUrls: ['./list-item.component.scss'],
@@ -14,7 +16,12 @@ import {
 })
 export class ListItemComponent {
   @Input() item: any;
+  @Input() backRoute!: string;
+  @Input() healthFeatureType!: HealthFeatureType;
   @Output() remove = new EventEmitter<any>();
+
+  featureTypeMeal = HealthFeatureType.Meal;
+  featureTypeWorkout = HealthFeatureType.Workout;
 
   toggled = false;
 
@@ -27,6 +34,6 @@ export class ListItemComponent {
   }
 
   getRoute(item: any) {
-    return [`../meals`, item.$key];
+    return [`../${this.backRoute}`, item.$key];
   }
 }

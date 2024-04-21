@@ -4,12 +4,17 @@ import { RouterModule } from '@angular/router';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 import { MealsService } from './services/meals/meals.service';
+import { WorkoutsService } from './services/workouts/workouts.service';
+
 import { ListItemComponent } from './components/list-item/list-item.component';
+
+import { JoinPipe } from './pipes/join.pipe';
+import { WorkoutPipe } from './pipes/workout.pipe';
 
 @NgModule({
   imports: [CommonModule, RouterModule, AngularFireDatabaseModule],
-  declarations: [ListItemComponent],
-  exports: [ListItemComponent],
-  providers: [MealsService],
+  declarations: [ListItemComponent, JoinPipe, WorkoutPipe],
+  exports: [ListItemComponent, JoinPipe, WorkoutPipe],
+  providers: [MealsService, WorkoutsService],
 })
 export class SharedModule {}
