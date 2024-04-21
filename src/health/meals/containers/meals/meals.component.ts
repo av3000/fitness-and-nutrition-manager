@@ -24,6 +24,10 @@ export class MealsComponent {
     this.subs$.add(this.service.meals$.subscribe());
   }
 
+  removeMeal(event: Meal): void {
+    this.service.delete(event.$key);
+  }
+
   ngOnDestroy(): void {
     this.subs$.unsubscribe();
   }

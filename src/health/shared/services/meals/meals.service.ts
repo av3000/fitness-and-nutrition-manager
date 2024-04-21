@@ -4,7 +4,7 @@ import {
   AngularFireList,
 } from '@angular/fire/compat/database';
 
-import { Observable, tap } from 'rxjs';
+import { Observable, filter, map, tap, of } from 'rxjs';
 
 import { AuthService } from 'src/auth/shared/services/auth/auth.service';
 import { Store } from 'store';
@@ -32,8 +32,18 @@ export class MealsService {
 
   meals$: Observable<Meal[]> = this.db
     .list<Meal>(`${this.userMealsEndpointAPI}`)
-    .valueChanges()
-    .pipe(tap((meals) => this.store.set('meals', meals)));
+    .snapshotChanges()
+    .pipe(
+      map((actions) =>
+        actions.map((a) => {
+          const data = a.payload.val();
+          return { ...data, $key: a.key } as Meal;
+        })
+      ),
+      tap((meals) => {
+        this.store.set('meals', meals);
+      })
+    );
 
   get uid(): string | undefined {
     return this.authService.currentUser?.uid;
@@ -47,12 +57,24 @@ export class MealsService {
 
   // TODO: implement remaining methods with latest AngularFire API
 
-  getAll(): AngularFireList<Meal> {
-    // TODO: implement this method to retrieve all meals into meals list component
-    return this.mealsTable;
+  getOne(key: string): Observable<Meal> {
+    if (!key) return of({} as Meal);
+
+    return this.store.select<Meal[]>('meals').pipe(
+      filter((meals) => !!meals),
+      map((meals) => meals.find((meal) => meal.$key === key) || ({} as Meal))
+    );
   }
 
   create(mealCreateParams: MealCreateParameters) {
     return this.mealsTable.push(mealCreateParams as Meal);
+  }
+
+  update(key: string, updatedMeal: Meal) {
+    return this.mealsTable.update(key, updatedMeal);
+  }
+
+  delete(key: string) {
+    return this.mealsTable.remove(key);
   }
 }

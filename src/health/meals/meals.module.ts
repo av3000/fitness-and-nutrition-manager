@@ -11,6 +11,7 @@ import { MealFormComponent } from './components/meal-form/meal-form.component';
 export const ROUTES: Routes = [
   { path: '', component: MealsComponent },
   { path: 'new', component: MealItemComponent },
+  { path: ':id', component: MealItemComponent },
 ];
 
 @NgModule({
