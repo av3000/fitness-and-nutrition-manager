@@ -1,0 +1,26 @@
+<div class="workout">
+  <div class="workout__title">
+    <h1>
+      <img src="/assets/img/workout.svg" alt="" />
+      <span *ngIf="workout$ | async as workout; else loadingTitle">
+        {{ workout.name ? "Edit" : "Create" }} workout
+      </span>
+      <ng-template #loadingTitle>Loading...</ng-template>
+    </h1>
+  </div>
+  <div *ngIf="workout$ | async as workout; else loadingWorkout">
+    <workout-form
+      [workout]="workout"
+      (update)="updateWorkout($event)"
+      (remove)="removeWorkout($event)"
+      (create)="createWorkout($event)"
+    >
+    </workout-form>
+  </div>
+  <ng-template #loadingWorkout>
+    <div class="message">
+      <img src="/assets/img/loading.svg" alt="" />
+      Fetching workout...
+    </div>
+  </ng-template>
+</div>
