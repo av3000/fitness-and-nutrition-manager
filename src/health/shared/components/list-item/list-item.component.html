@@ -3,11 +3,20 @@
     <p class="list-item__name">
       {{ item.name }}
     </p>
-    <p class="list-item__ingredients">
-      <span>
-        {{ item.ingredients }}
-      </span>
-    </p>
+
+    <ng-container [ngSwitch]="healthFeatureType">
+      <p *ngSwitchCase="featureTypeMeal" class="list-item__ingredients">
+        <span>
+          {{ item.ingredients | join }}
+        </span>
+      </p>
+
+      <p *ngSwitchCase="featureTypeWorkout" class="list-item__ingredients">
+        {{ item | workout }}
+      </p>
+
+      <p *ngSwitchDefault class="list-item__ingredients">default {{ item }}</p>
+    </ng-container>
   </a>
 
   <div class="list-item__delete" *ngIf="toggled">

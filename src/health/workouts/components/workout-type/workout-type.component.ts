@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { WorkoutTypes } from 'src/health/shared/enums';
+
 export const TYPE_CONTROL_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => WorkoutTypeComponent),
@@ -15,7 +17,7 @@ export const TYPE_CONTROL_ACCESSOR = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WorkoutTypeComponent implements ControlValueAccessor {
-  selectors = ['strength', 'endurance'];
+  selectors = WorkoutTypes;
   value: string | null = null;
 
   private onTouch: Function | null = null;

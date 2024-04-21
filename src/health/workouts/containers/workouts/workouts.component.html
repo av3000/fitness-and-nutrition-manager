@@ -18,6 +18,8 @@
       *ngFor="let workout of workouts"
       [item]="workout"
       (remove)="removeWorkout($event)"
+      backRoute="workouts"
+      [healthFeatureType]="featureTypeWorkout"
     >
     </list-item>
   </div>

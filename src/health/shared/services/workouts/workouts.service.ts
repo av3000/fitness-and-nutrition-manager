@@ -8,10 +8,11 @@ import { Observable, filter, map, tap, of } from 'rxjs';
 
 import { AuthService } from 'src/auth/shared/services/auth/auth.service';
 import { Store } from 'store';
+import { WorkoutType } from '../../enums';
 
 export interface Workout {
   name: string;
-  type: string;
+  type: WorkoutType;
   strength: any;
   endurance: any;
   timestamp: number;
@@ -21,7 +22,7 @@ export interface Workout {
 
 export interface WorkoutCreateParameters {
   name: string;
-  type: string;
+  type: WorkoutType;
   strength: any;
   endurance: any;
 }

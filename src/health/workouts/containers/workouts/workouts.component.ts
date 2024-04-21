@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+
 import { Observable, Subscription } from 'rxjs';
+
+import { HealthFeatureType } from 'src/health/shared/enums';
 import {
   Workout,
   WorkoutsService,
@@ -14,6 +17,8 @@ import { Store } from 'store';
 export class WorkoutsComponent {
   workouts$!: Observable<Workout[]>;
   private subs$ = new Subscription();
+
+  featureTypeWorkout = HealthFeatureType.Workout;
 
   constructor(private service: WorkoutsService, private store: Store) {}
 

@@ -13,7 +13,7 @@
     </div>
 
     <div class="workout-form__details">
-      <div *ngIf="form.get('type')?.value === 'strength'">
+      <div *ngIf="form.get('type')?.value === strengthType?.value">
         <div class="workout-form__fields" formGroupName="strength">
           <label>
             <h3>Reps</h3>
@@ -29,7 +29,7 @@
           </label>
         </div>
       </div>
-      <div *ngIf="form.get('type')?.value === 'endurance'">
+      <div *ngIf="form.get('type')?.value === enduranceType?.value">
         <div class="workout-form__fields" formGroupName="endurance">
           <label>
             <h3>Distance <span>(km)</span></h3>

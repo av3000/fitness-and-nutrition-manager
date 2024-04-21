@@ -6,12 +6,8 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import {
-  FormArray,
-  FormBuilder,
-  FormControl,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { WorkoutType, WorkoutTypes } from 'src/health/shared/enums';
 
 import {
   Workout,
@@ -30,12 +26,19 @@ export class WorkoutFormComponent implements OnInit {
   @Output() remove = new EventEmitter<string>();
   @Input() workout: Workout | null = null;
 
+  strengthType = WorkoutTypes.find(
+    (type) => type.value === WorkoutType.Strength
+  );
+  enduranceType = WorkoutTypes.find(
+    (type) => type.value === WorkoutType.Endurance
+  );
+
   toggled = false;
   exists = false;
 
   form = this.fb.group({
     name: ['', Validators.required],
-    type: 'strength',
+    type: WorkoutType.Strength,
     strength: this.fb.group({
       reps: 0,
       sets: 0,
@@ -47,7 +50,7 @@ export class WorkoutFormComponent implements OnInit {
     }),
   });
 
-  get placeholder() {
+  get placeholder(): string {
     return `e.g. ${
       this.form.get('type')?.value === 'strength' ? 'Benchpress' : 'Treadmill'
     }`;
