@@ -36,7 +36,7 @@ export const ROUTES: Routes = [
     AngularFireDatabaseModule,
     AngularFireAuthModule,
 
-    SharedModule.forRoot(),
+    SharedModule,
     RouterModule.forChild(ROUTES),
   ],
 })

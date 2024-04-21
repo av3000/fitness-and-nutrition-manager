@@ -12,14 +12,6 @@ import { AuthGuard } from './guards/auth.guard';
   imports: [CommonModule, ReactiveFormsModule],
   declarations: [AuthFormComponent],
   exports: [AuthFormComponent],
+  providers: [AuthService, AuthGuard],
 })
-export class SharedModule {
-  // This method is used to provide the AuthService to the AuthModule.
-  // Register and Login modules are both importing SharedModule, so we need to avoid duplicate providers.
-  static forRoot(): ModuleWithProviders<SharedModule> {
-    return {
-      ngModule: SharedModule,
-      providers: [AuthService, AuthGuard],
-    };
-  }
-}
+export class SharedModule {}
