@@ -1,11 +1,17 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+} from '@angular/core';
 
 @Component({
   selector: 'schedule-calendar',
   styleUrls: ['schedule-calendar.component.scss'],
   templateUrl: './schedule-calendar.component.html',
 })
-export class ScheduleCalendarComponent {
+export class ScheduleCalendarComponent implements OnChanges {
   @Output() change = new EventEmitter<Date>();
   @Input()
   set date(date: Date | null) {
@@ -14,7 +20,34 @@ export class ScheduleCalendarComponent {
     }
   }
 
+  selectedDayIndex!: number;
   selectedDay!: Date | null;
+  selectedWeek!: Date;
+
+  ngOnChanges() {
+    if (this.selectedDay) {
+      console.log(
+        ' schedule calendar component ngOnChanges selectedDay',
+        this.selectedDay
+      );
+      this.selectedDayIndex = this.getToday(this.selectedDay);
+      this.selectedWeek = this.getStartOfWeek(new Date(this.selectedDay));
+    }
+  }
+
+  selectDay(index: number) {
+    const selectedDay = new Date(this.selectedWeek);
+    selectedDay.setDate(selectedDay.getDate() + index);
+    this.change.emit(selectedDay);
+  }
+
+  getToday(date: Date) {
+    let today = date.getDay() - 1;
+    if (today < 0) {
+      today = 6;
+    }
+    return today;
+  }
 
   onChange(weekOffset: number) {
     const startOfWeek = this.getStartOfWeek(new Date());
