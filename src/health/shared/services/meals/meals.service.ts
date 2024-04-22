@@ -8,19 +8,17 @@ import { Observable, filter, map, tap, of } from 'rxjs';
 
 import { AuthService } from 'src/auth/shared/services/auth/auth.service';
 import { Store } from 'store';
+import { CommonFirebaseInstance } from '../../types';
 
-export interface Meal {
-  name: string;
-  ingredients: string[];
-  timestamp: number;
-  $key: string;
-  $exists: () => boolean;
-}
+export interface Meal extends CommonFirebaseInstance, MealProperties {}
 
-export interface MealCreateParameters {
-  name: string;
+export interface MealProperties {
   ingredients: string[];
 }
+
+export interface MealCreateParameters
+  extends MealProperties,
+    Pick<CommonFirebaseInstance, 'name'> {}
 
 @Injectable({
   providedIn: 'root',

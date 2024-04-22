@@ -9,23 +9,19 @@ import { Observable, filter, map, tap, of } from 'rxjs';
 import { AuthService } from 'src/auth/shared/services/auth/auth.service';
 import { Store } from 'store';
 import { WorkoutType } from '../../enums';
+import { CommonFirebaseInstance } from '../../types';
 
-export interface Workout {
-  name: string;
-  type: WorkoutType;
-  strength: any;
-  endurance: any;
-  timestamp: number;
-  $key: string;
-  $exists: () => boolean;
-}
+export interface Workout extends CommonFirebaseInstance, WorkoutProperties {}
 
-export interface WorkoutCreateParameters {
-  name: string;
+export interface WorkoutProperties {
   type: WorkoutType;
   strength: any;
   endurance: any;
 }
+
+export interface WorkoutCreateParameters
+  extends WorkoutProperties,
+    Pick<CommonFirebaseInstance, 'name'> {}
 
 @Injectable({
   providedIn: 'root',

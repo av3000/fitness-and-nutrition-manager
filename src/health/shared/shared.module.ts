@@ -5,6 +5,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 import { MealsService } from './services/meals/meals.service';
 import { WorkoutsService } from './services/workouts/workouts.service';
+import { ScheduleService } from './services/schedule/schedule.service';
 
 import { ListItemComponent } from './components/list-item/list-item.component';
 
@@ -15,6 +16,6 @@ import { WorkoutPipe } from './pipes/workout.pipe';
   imports: [CommonModule, RouterModule, AngularFireDatabaseModule],
   declarations: [ListItemComponent, JoinPipe, WorkoutPipe],
   exports: [ListItemComponent, JoinPipe, WorkoutPipe],
-  providers: [MealsService, WorkoutsService],
+  providers: [MealsService, WorkoutsService, ScheduleService],
 })
 export class SharedModule {}
