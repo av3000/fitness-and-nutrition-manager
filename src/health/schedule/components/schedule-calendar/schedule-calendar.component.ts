@@ -26,10 +26,6 @@ export class ScheduleCalendarComponent implements OnChanges {
 
   ngOnChanges() {
     if (this.selectedDay) {
-      console.log(
-        ' schedule calendar component ngOnChanges selectedDay',
-        this.selectedDay
-      );
       this.selectedDayIndex = this.getToday(this.selectedDay);
       this.selectedWeek = this.getStartOfWeek(new Date(this.selectedDay));
     }
