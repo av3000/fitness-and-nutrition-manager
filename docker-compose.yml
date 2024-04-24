@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  fitness-angular-app:
+    build:
+      context: ./
+      dockerfile: .docker/Dockerfile
+    command: npm run start:docker:dev
+    ports:
+      - "9000:9000"
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
