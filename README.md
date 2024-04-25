@@ -2,11 +2,13 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.14.
 
+[Firebase](https://www.npmjs.com/package/firebase) and [@angular/fire](https://www.npmjs.com/package/@angular/fire) used for authentication and NoSQL real-time database.
+
 ## Development server
 
 Run `npm start` for a dev server. Navigate to `http://localhost:9000/`. The app will automatically reload if you change any of the source files.
 
-Project is build and served using [`@angular-builders/custom-webpack` package](https://www.npmjs.com/package/@angular-builders/custom-webpack)
+Project is build and served using [@angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack).
 
 ## Docker
 
