@@ -6,8 +6,9 @@ services:
       context: ./
       dockerfile: .docker/Dockerfile
     command: npm run start:docker:dev
+    env_file: .env
     ports:
-      - "9000:9000"
+      - "${DOCKER_PORT}:${LOCAL_PORT}"
     volumes:
       - .:/usr/src/app
     environment:
