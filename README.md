@@ -1,26 +1,30 @@
 # FitnessAndNutritionManager
 
+Live version available at [https://fitness-app-dd09c.firebaseapp.com/](https://fitness-app-dd09c.firebaseapp.com/)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.14.
+
+[Firebase](https://www.npmjs.com/package/firebase) and [@angular/fire](https://www.npmjs.com/package/@angular/fire) used for authentication and NoSQL real-time database.
+
+In order to setup your firebase database, visit [firebase console](https://console.firebase.google.com/) create project and copy-paste firebase config of your new database.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+Project is build and served using [@angular-builders/custom-webpack](https://www.npmjs.com/package/@angular-builders/custom-webpack).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Docker
+
+You can also run the app in a Docker container. First, recommend to [Docker Desktop](https://www.docker.com/products/docker-desktop). Then, to build and start the Docker container:
+
+```bash
+docker-compose up
+```
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run `npm run build` to build the project. The build artifacts will be stored in the dist/ directory.
 
 ## Further help
 

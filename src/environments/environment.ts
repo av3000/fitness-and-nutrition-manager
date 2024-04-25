@@ -1,14 +1,13 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: 'AIzaSyDobmDnHoVi2GFRd7ZGRF3_ObmTR_vKjLE',
-    authDomain: 'fitness-app-dd09c.firebaseapp.com',
-    databaseURL:
-      'https://fitness-app-dd09c-default-rtdb.europe-west1.firebasedatabase.app',
-    projectId: 'fitness-app-dd09c',
-    storageBucket: 'fitness-app-dd09c.appspot.com',
-    messagingSenderId: '67073564566',
-    appId: '1:67073564566:web:5f0c477861da07ce9747b7',
-    measurementId: 'G-8CXZVSSV87',
+    apiKey: process.env['FIREBASE_CONFIG_API_KEY'],
+    authDomain: process.env['FIREBASE_CONFIG_AUTH_DOMAIN'],
+    databaseURL: process.env['FIREBASE_CONFIG_DATABASE_URL'],
+    projectId: process.env['FIREBASE_CONFIG_PROJECT_ID'],
+    storageBucket: process.env['FIREBASE_CONFIG_STORAGE_BUCKET'],
+    messagingSenderId: process.env['FIREBASE_CONFIG_MESSAGING_SENDER_ID'],
+    appId: process.env['FIREBASE_CONFIG_APP_ID'],
+    measurementId: process.env['FIREBASE_CONFIG_MEASUREMENT_ID'],
   },
 };
