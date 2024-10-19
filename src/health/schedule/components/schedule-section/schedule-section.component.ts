@@ -18,6 +18,7 @@ import { Workout } from 'src/health/shared/services/workouts/workouts.service';
 export class ScheduleSectionComponent {
   @Input() name!: string;
   @Input() section!: ScheduleItem;
+  @Input() hasWorkoutsSection = true;
   @Output() select = new EventEmitter<any>();
 
   onSelect(type: string, assigned: Meal[] | Workout[] = []) {

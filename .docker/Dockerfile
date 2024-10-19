@@ -4,8 +4,10 @@ ENV DOCKER_ENV=true
 
 WORKDIR /usr/src/app
 
-COPY . /usr/src/app/
+COPY package*.json package-lock.json /usr/src/app/
 
 RUN npm install
+
+COPY . .
 
 CMD ["npm", "start"]

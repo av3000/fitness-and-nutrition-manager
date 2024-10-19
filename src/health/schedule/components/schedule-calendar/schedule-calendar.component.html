@@ -9,6 +9,7 @@
 
   <schedule-section
     *ngFor="let section of defaultSections"
+    [hasWorkoutsSection]="section.hasWorkoutsSection"
     [name]="section.name"
     [section]="getSection(section.key)"
     (select)="selectSection($event, section.key)"

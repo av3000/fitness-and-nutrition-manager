@@ -33,10 +33,10 @@ export class ScheduleCalendarComponent implements OnChanges {
   selectedWeek!: Date;
 
   defaultSections = [
-    { key: 'morning', name: 'Morning' },
-    { key: 'lunch', name: 'Lunch' },
-    { key: 'evening', name: 'Evening' },
-    { key: 'snacks', name: 'Snacks and Drinks' },
+    { key: 'morning', name: 'Morning', hasWorkoutsSection: true },
+    { key: 'lunch', name: 'Lunch', hasWorkoutsSection: true },
+    { key: 'evening', name: 'Evening', hasWorkoutsSection: true },
+    { key: 'snacks', name: 'Snacks and Drinks', hasWorkoutsSection: false },
   ];
 
   ngOnChanges() {

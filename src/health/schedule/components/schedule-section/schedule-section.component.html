@@ -16,13 +16,15 @@
       </div>
     </ng-template>
 
-    <div
-      class="schedule-section__item workout"
-      *ngIf="section.workouts; else addWorkout"
-      (click)="onSelect('workouts', section.workouts)"
-    >
-      <span>{{ section.workouts | join }}</span>
-    </div>
+    <ng-container *ngIf="hasWorkoutsSection">
+      <div
+        class="schedule-section__item workout"
+        *ngIf="section.workouts; else addWorkout"
+        (click)="onSelect('workouts', section.workouts)"
+      >
+        <span>{{ section.workouts | join }}</span>
+      </div>
+    </ng-container>
     <ng-template #addWorkout>
       <div class="schedule-section__item" (click)="onSelect('workouts')">
         Assign Workout
