@@ -18,7 +18,7 @@ Project is build and served using [@angular-builders/custom-webpack](https://www
 - CRUD actions for Calendar/days meals and workouts
 - Reactive Angular components with vanilla SCSS
 - Shared reusable constants, types, pipes and UI components
-- Lazy loadable modules
+- Lazy loadable modules and routable components
 - Authentication of routes and guards implemented with Firebase and AngularFireAuth library
 - Realtime updates with firebase websocket snapshotChanges
 - Data access with single general subject store
