@@ -1,0 +1,138 @@
+.ingredient-form {
+  &__name,
+  &__calorie,
+  &__description,
+  &__macroelements {
+    padding: 30px;
+    flex-direction: column;
+    border-bottom: 1px solid #d1deeb;
+  }
+
+  &__description textarea,
+  &__name input,
+  &__calorie input,
+  &__macro-item select,
+  &__macro-item input {
+    outline: 0;
+    font-size: 16px;
+    padding: 10px 15px;
+    margin: 0;
+    width: 100%;
+    background: #fff;
+    color: #545e6f;
+    border: 1px solid #d1deeb;
+    border-radius: 3px;
+    transition: all 0.2s ease-in-out;
+    &:focus {
+      border-color: #a5b9ce;
+    }
+    &::-webkit-input-placeholder {
+      color: #aaa;
+    }
+  }
+
+  &__subtitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h3 {
+      margin: 20px 0;
+    }
+  }
+
+  &__macro-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+
+    button {
+      background-color: #d73a49;
+      border: none;
+      border-radius: 3px;
+      color: #fff;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+
+      &:hover {
+        background-color: darken(#d73a49, 5%);
+      }
+    }
+  }
+
+  &__add {
+    display: flex;
+    align-items: center;
+    background: #97c747;
+    color: #fff;
+    padding: 6px 15px;
+    border-radius: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    img {
+      width: 20px;
+      margin-right: 5px;
+    }
+  }
+
+  &__remove {
+    background: #d1deeb;
+    border: 1px solid #97c747;
+    border-radius: 3px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-image: url(/assets/img/remove.svg);
+    background-size: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      background-color: darken(#d1deeb, 5%);
+    }
+  }
+
+  &__submit {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+
+    .button {
+      background: #39a1e7;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      padding: 10px 20px;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out;
+
+      &:hover {
+        background: darken(#39a1e7, 5%);
+      }
+
+      &--cancel {
+        background: #fff;
+        color: #545e6f;
+        border: 1px solid #d1deeb;
+
+        &:hover {
+          background: #f9f9f9;
+        }
+      }
+
+      &--delete {
+        background: #d73a49;
+
+        &:hover {
+          background: darken(#d73a49, 5%);
+        }
+      }
+    }
+  }
+}

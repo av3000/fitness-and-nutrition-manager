@@ -4,10 +4,12 @@ import { User } from './auth/shared/services/auth/auth.service';
 import { Meal } from './health/shared/services/meals/meals.service';
 import { Workout } from './health/shared/services/workouts/workouts.service';
 import { ScheduleItem } from './health/shared/services/schedule/schedule.service';
+import { Ingredient } from './health/shared/services/ingredients/ingredients.service';
 
 export interface State {
   user: User | undefined;
   meals: Meal[] | undefined;
+  ingredients: Ingredient[] | undefined;
   workouts: Workout[] | undefined;
   list: Meal[] | Workout[] | undefined;
   date: Date | undefined;
@@ -19,6 +21,7 @@ export interface State {
 const state: State = {
   user: undefined,
   meals: undefined,
+  ingredients: undefined,
   workouts: undefined,
   list: undefined,
   date: undefined,

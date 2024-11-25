@@ -17,4 +17,5 @@ export const WorkoutTypes = [
 export const enum HealthFeatureType {
   Workout = 'workout',
   Meal = 'meal',
+  Ingredient = 'ingredient',
 }

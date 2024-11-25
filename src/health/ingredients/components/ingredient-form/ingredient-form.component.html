@@ -1,0 +1,119 @@
+<div class="ingredient-form">
+  <form [formGroup]="form">
+    <div class="ingredient-form__name">
+      <label>
+        <h3>Ingredient Name</h3>
+        <input
+          type="text"
+          placeholder="e.g. Chicken Breast"
+          formControlName="title"
+        />
+        <div
+          class="error"
+          *ngIf="form.get('title')?.invalid && form.get('title')?.touched"
+        >
+          Name is required
+        </div>
+      </label>
+    </div>
+
+    <div class="ingredient-form__calorie">
+      <label>
+        <h3>Calories</h3>
+        <input type="number" placeholder="e.g. 165" formControlName="calorie" />
+        <div
+          class="error"
+          *ngIf="form.get('calorie')?.invalid && form.get('calorie')?.touched"
+        >
+          Calorie must be a positive number
+        </div>
+      </label>
+    </div>
+
+    <div class="ingredient-form__description">
+      <label>
+        <h3>Description</h3>
+        <textarea
+          placeholder="e.g. A lean protein source."
+          formControlName="description"
+        ></textarea>
+      </label>
+    </div>
+
+    <div class="ingredient-form__macroelements">
+      <div class="ingredient-form__subtitle">
+        <h3>Macroelements</h3>
+        <button
+          type="button"
+          class="ingredient-form__add"
+          (click)="addMacroElement()"
+        >
+          <img src="/assets/img/add-white.svg" />
+          Add Macroelement
+        </button>
+      </div>
+      <div formArrayName="macroelements">
+        <div
+          *ngFor="let macro of macroelements.controls; index as i"
+          [formGroupName]="i"
+          class="ingredient-form__macro-item"
+        >
+          <label>
+            <span>Type</span>
+            <select formControlName="title">
+              <option value="carbohydrates">Carbohydrates</option>
+              <option value="protein">Protein</option>
+              <option value="fats">Fats</option>
+              <option value="fiber">Fiber</option>
+            </select>
+          </label>
+          <label>
+            <span>Amount (g)</span>
+            <input type="number" formControlName="amount" />
+          </label>
+          <button
+            type="button"
+            class="ingredient-form__remove"
+            (click)="removeMacroElement(i)"
+          >
+            <img src="/assets/img/remove.svg" />
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ingredient-form__submit">
+      <div>
+        <button
+          *ngIf="!exists"
+          type="button"
+          class="button"
+          (click)="createIngredient()"
+        >
+          Create Ingredient
+        </button>
+        <button
+          *ngIf="exists"
+          type="button"
+          class="button"
+          (click)="updateIngredient()"
+        >
+          Save Ingredient
+        </button>
+        <a class="button button--cancel" [routerLink]="['../']"> Cancel </a>
+      </div>
+      <div class="ingredient-form__delete" *ngIf="exists">
+        <div *ngIf="toggled">
+          <p>Delete item?</p>
+          <button class="confirm" type="button" (click)="removeIngredient()">
+            Yes
+          </button>
+          <button class="cancel" type="button" (click)="toggle()">No</button>
+        </div>
+        <button class="button button--delete" type="button" (click)="toggle()">
+          Delete
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
