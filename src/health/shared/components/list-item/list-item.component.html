@@ -15,6 +15,13 @@
         {{ item | workout }}
       </p>
 
+      <p *ngSwitchCase="featureTypeIngridient" class="list-item__ingredients">
+        {{ item.calorie }} kcal
+        <span *ngFor="let element of item.macroelements">
+          | {{ element.title }} {{ element.amount || "N/A" }} (g)
+        </span>
+      </p>
+
       <p *ngSwitchDefault class="list-item__ingredients">default {{ item }}</p>
     </ng-container>
   </a>

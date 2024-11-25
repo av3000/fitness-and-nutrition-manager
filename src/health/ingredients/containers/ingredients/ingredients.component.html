@@ -1,0 +1,32 @@
+<div class="ingredients">
+  <div class="ingredients__title">
+    <h1>
+      <img src="/assets/img/food.svg" alt="" />
+      Your ingredients
+    </h1>
+    <a class="btn__add" [routerLink]="['../ingredients/new']">
+      <img src="/assets/img/add-white.svg" alt="" />
+      New Ingredient
+    </a>
+  </div>
+  <div *ngIf="ingredients$ | async as ingredients; else loading">
+    <div class="message" *ngIf="!ingredients.length">
+      <img src="/assets/img/face.svg" alt="" />
+      No ingredients, add a new ingredient to start
+    </div>
+    <list-item
+      *ngFor="let ingredient of ingredients"
+      [item]="ingredient"
+      (remove)="removeIngredient($event)"
+      backRoute="ingredients"
+      [healthFeatureType]="featureTypeIngredient"
+    >
+    </list-item>
+  </div>
+  <ng-template #loading>
+    <div class="message">
+      <img src="/assets/img/loading.svg" alt="" />
+      Fetching ingredients...
+    </div>
+  </ng-template>
+</div>

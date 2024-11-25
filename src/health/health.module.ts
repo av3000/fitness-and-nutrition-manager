@@ -18,6 +18,14 @@ export const ROUTES = [
       import('./meals/meals.module').then((m) => m.MealsModule),
   },
   {
+    path: 'ingredients',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./ingredients/ingredients.module').then(
+        (m) => m.IngredientsModule
+      ),
+  },
+  {
     path: 'workouts',
     canActivate: [AuthGuard],
     loadChildren: () =>

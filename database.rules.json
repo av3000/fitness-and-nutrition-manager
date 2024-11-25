@@ -10,12 +10,16 @@
       "$uid": {
         ".read": "$uid === auth.uid",
         ".write": "$uid === auth.uid",
-        ".indexOn": [
-          "timestamp"
-        ]
+        ".indexOn": ["timestamp"]
       }
     },
     "meals": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    },
+    "ingredients": {
       "$uid": {
         ".read": "$uid === auth.uid",
         ".write": "$uid === auth.uid"
