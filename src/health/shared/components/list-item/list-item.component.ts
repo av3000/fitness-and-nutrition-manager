@@ -22,6 +22,7 @@ export class ListItemComponent {
 
   featureTypeMeal = HealthFeatureType.Meal;
   featureTypeWorkout = HealthFeatureType.Workout;
+  featureTypeIngridient = HealthFeatureType.Ingredient;
 
   toggled = false;
 

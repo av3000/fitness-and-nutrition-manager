@@ -29,16 +29,16 @@ export class IngredientFormComponent implements OnInit {
   exists = false;
 
   form = this.fb.group({
-    title: ['', Validators.required],
+    name: ['', Validators.required],
     calorie: [0, [Validators.required, Validators.min(0)]],
     description: [''],
     macroelements: this.fb.array([]),
   });
 
-  get requiredTitle() {
+  get requiredname() {
     return (
-      this.form.get('title')?.hasError('required') &&
-      this.form.get('title')?.touched
+      this.form.get('name')?.hasError('required') &&
+      this.form.get('name')?.touched
     );
   }
 
@@ -49,24 +49,25 @@ export class IngredientFormComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-    if (this.ingredient) {
-      console.log('exists, tiis ingrd', this.ingredient);
+    if (this.ingredient && this.ingredient.name) {
       this.exists = true;
 
       this.form.patchValue({
-        title: this.ingredient.title,
+        name: this.ingredient.name,
         calorie: this.ingredient.calorie,
         description: this.ingredient.description,
       });
 
-      this.ingredient.macroelements.forEach((macro) => {
-        this.macroelements.push(
-          this.fb.group({
-            title: [macro.title, Validators.required],
-            amount: [macro.amount, [Validators.required, Validators.min(0)]],
-          })
-        );
-      });
+      if (this.ingredient.macroelements) {
+        this.ingredient.macroelements.forEach((macro) => {
+          this.macroelements.push(
+            this.fb.group({
+              title: [macro.title, Validators.required],
+              amount: [macro.amount, [Validators.required, Validators.min(0)]],
+            })
+          );
+        });
+      }
     }
   }
 

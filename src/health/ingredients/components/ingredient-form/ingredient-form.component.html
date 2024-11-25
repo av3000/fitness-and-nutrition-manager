@@ -6,11 +6,11 @@
         <input
           type="text"
           placeholder="e.g. Chicken Breast"
-          formControlName="title"
+          formControlName="name"
         />
         <div
           class="error"
-          *ngIf="form.get('title')?.invalid && form.get('title')?.touched"
+          *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
         >
           Name is required
         </div>

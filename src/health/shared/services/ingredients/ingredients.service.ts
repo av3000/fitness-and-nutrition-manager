@@ -22,7 +22,7 @@ interface MacroElement {
 }
 
 export interface IngredientProperties {
-  title: string;
+  name: string;
   calorie: number;
   description: string;
   macroelements: MacroElement[];
